@@ -1,5 +1,3 @@
-import "./Button.css";
-
 const Button = ({ label, className }) => (
   <button className={className} type="button">
     {label}

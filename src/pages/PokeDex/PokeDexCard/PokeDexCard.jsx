@@ -1,8 +1,7 @@
 import React from "react";
-import "./PokeDexCard.css";
 
 const PokeDexCard = ({ pokemon }) => {
-  const { name, id, image, types } = pokemon;
+  const { name, image, types } = pokemon;
 
   const typeColors = {
     fire: "bg-fire",
@@ -15,8 +14,8 @@ const PokeDexCard = ({ pokemon }) => {
   };
 
   return (
-    <div className="max-w-xs rounded overflow-hidden shadow-lg m-2 card-container">
-      <img src={image} alt={name} className="w-full h-48 object-fit-contain" />
+    <div className="card w-60 overflow-hidden shadow-2xl rounded-2xl	m-2 card-container bg-white pt-6">
+      <img src={image} alt={name} className="w-full h-48 object-contain pb-4" />
 
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-6">{name}</div>
