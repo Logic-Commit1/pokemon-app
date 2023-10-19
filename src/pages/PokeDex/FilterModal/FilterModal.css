@@ -1,53 +1,14 @@
-/* .golden-chain_navbar-menu_container {
-  z-index: 100;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  flex-direction: column;
-  text-align: end;
-  background: white;
-  padding: 5rem 12rem;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  margin-top: 1rem;
-  min-width: 210px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  border: 1px solid #222;
-} */
-
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-}
-
-.modal-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
+  top: 35%;
+  left: 32%;
+  padding: 20px 180px;
+  background: white;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  max-width: 400px;
-  width: 100%;
 }
 
-h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
+.modal-typeslist {
+  display: grid;
 }
 
 li {
@@ -61,16 +22,6 @@ label {
 
 input[type="checkbox"] {
   margin-right: 5px;
-}
-
-button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
 }
 
 .close-button {

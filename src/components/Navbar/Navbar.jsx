@@ -36,7 +36,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="pokemon_navbar">
+    <div className="pokemon_navbar bg-indigo-950">
       <div className="pokemon_navbar-links_logo">
         <img src={logo} alt="logo" />
       </div>
