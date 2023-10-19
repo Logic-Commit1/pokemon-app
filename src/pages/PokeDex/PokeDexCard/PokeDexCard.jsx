@@ -1,5 +1,3 @@
-import React from "react";
-
 const PokeDexCard = ({ pokemon }) => {
   const { name, image, types } = pokemon;
 

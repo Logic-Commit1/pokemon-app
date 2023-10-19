@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
-import logo from "../../assets/pokemon-logo.png";
+import logo from "src/assets/pokemon-logo.png";
 
 import "./Navbar.css";
 

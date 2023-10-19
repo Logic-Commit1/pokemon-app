@@ -1,4 +1,4 @@
-import { GET_POKEMONS } from "../queries";
+import { GET_POKEMONS } from "src/queries";
 import { useQuery } from "@apollo/client";
 
 export const getPokemons = async () => {

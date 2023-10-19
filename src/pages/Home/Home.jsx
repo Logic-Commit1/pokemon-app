@@ -1,9 +1,8 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../../components/Button/Button";
-import img1 from "../../assets/bulbasaur.png";
-import img2 from "../../assets/pikachu.png";
-import img3 from "../../assets/charmander.png";
+import Button from "src/components/Button/Button";
+import img1 from "src/assets/bulbasaur.png";
+import img2 from "src/assets/pikachu.png";
+import img3 from "src/assets/charmander.png";
 
 const Home = () => (
   <div className="h-96 relative">

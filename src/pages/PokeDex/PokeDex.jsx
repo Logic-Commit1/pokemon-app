@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_POKEMONS } from "../../queries";
+import { GET_POKEMONS } from "src/queries";
 import PokeDexCard from "./PokeDexCard/PokeDexCard";
 import FilterModal from "./FilterModal/FilterModal";
 import { FiFilter } from "react-icons/fi";
