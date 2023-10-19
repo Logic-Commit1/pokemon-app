@@ -1,26 +1,84 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_POKEMONS } from "../../queries";
+import PokeDexCard from "./PokeDexCard/PokeDexCard";
+import FilterModal from "./FilterModal/FilterModal";
 import "./PokeDex.css";
 
-import { gql } from "@apollo/client";
-import client from "../../apolloClient";
+const PokeDex = () => {
+  const { loading, error, data } = useQuery(GET_POKEMONS);
+  const [isFilterModalOpen, setFilterModalOpen] = useState(false);
+  const [selectedTypes, setSelectedTypes] = useState([]);
+  const [filteredPokemons, setFilteredPokemons] = useState(null);
 
-client.query({
-  query: gql`
-    query getPokemons {
-      pokemons(first: 20) {
-        id
-        number
-        name
-      }
-    }
-  `,
-});
-/* .then((result) => console.log(result)); */
+  // Checks if the query is still loading
+  if (loading) return <p>Loading...</p>;
+  // Checks if an error occurred
+  if (error) return <p>Error: {error.message}</p>;
+  // Destructure the 'pokemons' data from the GraphQL query
+  const { pokemons } = data;
+  const extractedTypes = pokemons.map((pokemon) => pokemon.types).flat();
+  const uniqueTypesList = [...new Set(extractedTypes)];
 
-const PokeDex = () => (
-  <div className="pokemon-pokedex">
-    <p>Pokemon List here...</p>
-  </div>
-);
+  const openFilterModal = () => {
+    setFilterModalOpen(true);
+  };
+
+  const closeFilterModal = () => {
+    setFilterModalOpen(false);
+  };
+
+  const handleSelectType = () => {
+    const filteredPokemons = pokemons.filter((pokemon) =>
+      selectedTypes.every((type) => pokemon.types.includes(type))
+    );
+    setFilteredPokemons(filteredPokemons);
+    closeFilterModal();
+  };
+
+  const clearFilters = () => {
+    setFilteredPokemons(null);
+    setSelectedTypes([]);
+  };
+
+  return (
+    <div className="pokemon-pokedex">
+      <h2 className="text-2xl font-bold mb-9">PokeDex</h2>
+      <button
+        onClick={openFilterModal}
+        className="filter-button bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mb-4"
+      >
+        Filter by Type
+      </button>
+
+      <div className="flex flex-wrap justify-center	max-w-screen-xl">
+        {!filteredPokemons
+          ? pokemons.map((pokemon) => (
+              <PokeDexCard key={pokemon.id} pokemon={pokemon} />
+            ))
+          : filteredPokemons.map((pokemon) => (
+              <PokeDexCard key={pokemon.id} pokemon={pokemon} />
+            ))}
+      </div>
+      {isFilterModalOpen && (
+        <FilterModal
+          typesList={uniqueTypesList}
+          selectedTypes={selectedTypes}
+          setSelectedTypes={setSelectedTypes}
+          onClose={closeFilterModal}
+          onSelectType={handleSelectType}
+        />
+      )}
+      {filteredPokemons && (
+        <button
+          onClick={clearFilters}
+          className="clear-filter-button bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+        >
+          Clear Filters
+        </button>
+      )}
+    </div>
+  );
+};
 
 export default PokeDex;
