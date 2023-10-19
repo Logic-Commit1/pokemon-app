@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./FilterModal.css";
 
 const FilterModal = ({
@@ -19,7 +19,6 @@ const FilterModal = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     onSelectType(selectedTypes);
-    console.log(selectedTypes);
     onClose();
   };
 

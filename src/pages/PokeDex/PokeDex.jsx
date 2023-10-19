@@ -63,7 +63,7 @@ const PokeDex = () => {
         Filter by Type
       </button>
 
-      <div className="flex flex-wrap justify-center	max-w-screen-xl gap-2.5">
+      <div className="flex flex-wrap justify-center	max-w-1300 gap-2.5">
         {!filteredPokemons
           ? filteredPokemonsByName.map((pokemon) => (
               <PokeDexCard key={pokemon.id} pokemon={pokemon} />
