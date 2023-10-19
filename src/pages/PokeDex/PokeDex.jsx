@@ -10,6 +10,7 @@ const PokeDex = () => {
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [filteredPokemons, setFilteredPokemons] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(""); // New state for search query
 
   // Checks if the query is still loading
   if (loading) return <p>Loading...</p>;
@@ -30,7 +31,7 @@ const PokeDex = () => {
 
   const handleSelectType = () => {
     const filteredPokemons = pokemons.filter((pokemon) =>
-      selectedTypes.every((type) => pokemon.types.includes(type))
+      selectedTypes.some((type) => pokemon.types.includes(type))
     );
     setFilteredPokemons(filteredPokemons);
     closeFilterModal();
@@ -41,12 +42,18 @@ const PokeDex = () => {
     setSelectedTypes([]);
   };
 
+  const filteredPokemonsByName = pokemons.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="pokemon-pokedex">
       <h2 className="text-2xl font-bold mb-9">PokeDex</h2>
       <input
         type="text"
         placeholder="Search by Name"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full max-w-md p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text dark:focus:ring-blue-500 dark:focus:border-blue-500"
       />
       <button
@@ -58,7 +65,7 @@ const PokeDex = () => {
 
       <div className="flex flex-wrap justify-center	max-w-screen-xl gap-2.5">
         {!filteredPokemons
-          ? pokemons.map((pokemon) => (
+          ? filteredPokemonsByName.map((pokemon) => (
               <PokeDexCard key={pokemon.id} pokemon={pokemon} />
             ))
           : filteredPokemons.map((pokemon) => (
