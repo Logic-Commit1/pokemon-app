@@ -1,6 +1,6 @@
 # PokeDex Web App
 
-A responsive web application built with React that allows users to explore and search for Pokemon information from the GraphQL API. This project showcases your frontend development skills, and it includes two main views: the home page and the PokeDex page.
+A responsive web application built with React that allows users to explore and search for Pokemon information from the GraphQL API. It includes two main views: the home page and the PokeDex page.
 
 ## Features
 
