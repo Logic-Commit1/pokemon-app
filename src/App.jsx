@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 import { Route, Routes } from "react-router-dom";
 import { Home, PokeDex } from "./pages";
 
@@ -12,6 +13,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/pokedex" element={<PokeDex />} />
       </Routes>
+      <Footer />
     </>
   );
 };

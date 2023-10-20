@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import Button from "src/components/Button/Button";
 import bulbasaur from "src/assets/bulbasaur.png";
 import pikachu from "src/assets/pikachu.png";
@@ -49,7 +50,7 @@ const Home = () => (
         </div>
       </div>
       <div className="featured-features py-10 md:py-10 md:pb-14 text-center bg-yellow-300">
-        <h2 className="text-2xl text-black font-semibold pb-12 ">
+        <h2 className="text-2xl text-yellow-950 font-semibold pb-12 ">
           Pokemon App Features
         </h2>
         <div className="feature-cards grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl	 mx-auto">
@@ -96,16 +97,6 @@ const Home = () => (
           </div>
         </div>
       </div>
-      <footer className="bg-gray-900 text-white py-6">
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-2 md:mb-0"></div>
-        </div>
-        <div className="mt-4">
-          <p className="text-center text-sm text-gray-400">
-            &copy; 2023 All rights reserved.
-          </p>
-        </div>
-      </footer>
     </div>
   </div>
 );

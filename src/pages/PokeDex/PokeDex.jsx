@@ -5,6 +5,8 @@ import PokeDexCard from "./PokeDexCard/PokeDexCard";
 import FilterModal from "./FilterModal/FilterModal";
 import { FiFilter } from "react-icons/fi";
 
+import pokedex from "src/assets/pokedex.png";
+
 const PokeDex = () => {
   const { loading, error, data } = useQuery(GET_POKEMONS);
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
@@ -47,8 +49,8 @@ const PokeDex = () => {
   );
 
   return (
-    <div className="pokemon-pokedex flex justify-center items-center flex-col mt-12">
-      <h2 className="text-2xl font-bold mb-9">PokeDex</h2>
+    <div className="pokemon-pokedex  flex justify-center items-center flex-col mt-32">
+      <img className="w-60 mb-12" src={pokedex} alt="pokedex" />
       <input
         type="text"
         placeholder="Search by Name"
@@ -59,7 +61,8 @@ const PokeDex = () => {
       <div className="grid items-start">
         <button
           onClick={openFilterModal}
-          className="filter-button bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mb-4 flex items-center justify-evenly"
+          className="filter-button bg-yellow-950 hover:bg-yellow-800 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mb-4 flex items-center justify-evenly"
+          style={{ color: "white", border: "none" }}
         >
           Filter
           <FiFilter className="text-sm ml-3" />

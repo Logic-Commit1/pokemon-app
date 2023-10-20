@@ -1,5 +1,6 @@
 .pokemon_navbar {
-  position: fixed;
+  position: absolute;
+
   width: 100%;
   top: 0;
   z-index: 100;
@@ -7,7 +8,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 6rem;
-  background-color: rgba(0, 10, 82, 1);
 }
 
 .pokemon_navbar-links {
@@ -43,7 +43,8 @@
 }
 
 .pokemon_navbar-links_container p.active-link {
-  color: #fdd424;
+  color: #422006;
+  font-weight: 600;
 }
 
 .pokemon_navbar-menu {
@@ -86,6 +87,10 @@
 }
 
 @media screen and (max-width: 1024px) {
+  .pokemon_navbar {
+    position: fixed;
+  }
+
   .pokemon_navbar-links_container {
     display: none;
   }

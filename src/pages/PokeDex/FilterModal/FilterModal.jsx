@@ -44,13 +44,13 @@ const FilterModal = ({
         <div className="buttons text-center lg:text-right lg:mr-4 lg:mb-4">
           <button
             onClick={onClose}
-            className="py-2.5 px-5 my-2 mx-2 text-sm font-medium text-gray-900 focus:outline-none  border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:hover:text-white dark:hover:bg-gray-700"
+            className="py-2.5 px-5 my-2 mx-2 text-sm font-medium text-gray-900 focus:outline-none  border-gray-200  hover:text-amber-800 focus:z-10 focus:ring-4 focus:ring-gray-200 "
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 my-2 mx-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            className="text-white bg-amber-950 hover:bg-yellow-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 my-2 mx-2 dark:hover:bg-yellow-800 focus:outline-none dark:focus:bg-yellow-800"
           >
             Submit
           </button>
