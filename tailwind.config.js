@@ -7,10 +7,10 @@ export default {
         fire: "#f08030",
         water: "#6890f0",
         grass: "#78c850",
-        poison: "#a040a0",
+        poison: "#bb4abb",
         flying: "#a890f0",
         bug: "#a8b820",
-        normal: "#a8b820",
+        normal: "#bcbcae",
       },
       maxWidth: {
         1300: "1300px",

@@ -10,7 +10,7 @@ const PokeDex = () => {
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [filteredPokemons, setFilteredPokemons] = useState(null);
-  const [searchQuery, setSearchQuery] = useState(""); // New state for search query
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Checks if the query is still loading
   if (loading) return <center className="mt-10 text-xl">Loading...</center>;
@@ -56,14 +56,23 @@ const PokeDex = () => {
         onChange={(e) => setSearchQuery(e.target.value)}
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block max-w-md p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text dark:focus:ring-blue-500 dark:focus:border-blue-500 w-80 lg:w-full mb-5"
       />
-      <button
-        onClick={openFilterModal}
-        className="filter-button bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mb-4 flex items-center justify-evenly"
-      >
-        Filter
-        <FiFilter className="text-sm ml-3" />
-      </button>
-
+      <div className="grid items-start">
+        <button
+          onClick={openFilterModal}
+          className="filter-button bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mb-4 flex items-center justify-evenly"
+        >
+          Filter
+          <FiFilter className="text-sm ml-3" />
+        </button>
+        {filteredPokemons && (
+          <button
+            onClick={clearFilters}
+            className="clear-filter-button bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+          >
+            Clear Filters
+          </button>
+        )}
+      </div>
       <div className="flex flex-wrap justify-center	max-w-1300 gap-2.5 pb-10">
         {!filteredPokemons
           ? filteredPokemonsByName.map((pokemon) => (
@@ -73,6 +82,7 @@ const PokeDex = () => {
               <PokeDexCard key={pokemon.id} pokemon={pokemon} />
             ))}
       </div>
+
       {isFilterModalOpen && (
         <FilterModal
           typesList={uniqueTypesList}
@@ -81,14 +91,6 @@ const PokeDex = () => {
           onClose={closeFilterModal}
           onSelectType={handleSelectType}
         />
-      )}
-      {filteredPokemons && (
-        <button
-          onClick={clearFilters}
-          className="clear-filter-button bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-        >
-          Clear Filters
-        </button>
       )}
     </div>
   );
