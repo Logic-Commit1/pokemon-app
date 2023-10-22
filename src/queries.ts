@@ -10,3 +10,10 @@ export const GET_POKEMONS = gql`
     }
   }
 `;
+
+export type Pokemon = {
+  id: string;
+  name: string;
+  image: string;
+  types: string[];
+};

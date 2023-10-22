@@ -1,4 +1,3 @@
-import React from "react";
 import { PokemonProvider } from "src/contexts/PokemonContext";
 import { Route, Routes } from "react-router-dom";
 import { HomePage, PokeDexPage } from "src/pages";

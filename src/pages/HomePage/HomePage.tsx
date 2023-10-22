@@ -1,7 +1,7 @@
 import Features from "./Features/Features";
 import Hero from "./Hero/Hero";
 
-const HomePage = () => (
+const HomePage: React.FC = () => (
   <div className="relative mt-24">
     <div className="hero md:h-full">
       <Hero />

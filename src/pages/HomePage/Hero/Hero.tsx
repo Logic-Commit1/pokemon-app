@@ -24,11 +24,6 @@ function Hero() {
           src={charmander}
           alt="charmander"
         />
-        {/* <img
-            className="absolute lg:mb-20 lg:ml-0 lg:pb-5 md:pb-4 md:mr-24 sm:pb-9 sm:mr-16 mb-0 mr-0 lg:mr-20 max-w-sm:pb-5 max-h-1 sm:max-w-lg sm:max-h-16 sm:scale-x--1"
-            src={pokeball}
-            alt="pokeball"
-          /> */}
       </div>
       <div className="hero-text max-w-sm text-left	">
         <h1 className="text-4xl text-gray-950	 font-semibold mb-4">

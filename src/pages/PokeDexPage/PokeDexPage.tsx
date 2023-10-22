@@ -4,14 +4,19 @@ import FilterModal from "./FilterModal/FilterModal";
 import { FiFilter } from "react-icons/fi";
 import { usePokemon } from "src/contexts/PokemonContext";
 import pokedex from "src/assets/pokedex.png";
+import { Pokemon } from "src/queries";
 
-const PokeDexPage = () => {
+interface PokeDexPageProps {}
+
+const PokeDexPage: React.FC<PokeDexPageProps> = () => {
   const { loading, error, data } = usePokemon();
 
-  const [isFilterModalOpen, setFilterModalOpen] = useState(false);
-  const [selectedTypes, setSelectedTypes] = useState([]);
-  const [filteredPokemons, setFilteredPokemons] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [isFilterModalOpen, setFilterModalOpen] = useState<boolean>(false);
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[] | null>(
+    null
+  );
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   if (loading)
     return (
@@ -19,12 +24,13 @@ const PokeDexPage = () => {
         Loading Pokemons...
       </center>
     );
-  // Checks if an error occurred
   if (error) return <p>Error: {error.message}</p>;
-  // Destructure the 'pokemons' data from the GraphQL query
   const { pokemons } = data;
-  const extractedTypes = pokemons.map((pokemon) => pokemon.types).flat();
-  const uniqueTypesList = [...new Set(extractedTypes)];
+
+  const extractedTypes = pokemons
+    .map((pokemon: Pokemon) => pokemon.types)
+    .flat();
+  const uniqueTypesList: any[] = [...new Set(extractedTypes)];
 
   const openFilterModal = () => {
     setFilterModalOpen(true);
@@ -35,7 +41,7 @@ const PokeDexPage = () => {
   };
 
   const handleSelectType = () => {
-    const filteredPokemons = pokemons.filter((pokemon) =>
+    const filteredPokemons = pokemons.filter((pokemon: Pokemon) =>
       selectedTypes.some((type) => pokemon.types.includes(type))
     );
     setFilteredPokemons(filteredPokemons);
@@ -47,7 +53,7 @@ const PokeDexPage = () => {
     setSelectedTypes([]);
   };
 
-  const filteredPokemonsByName = pokemons.filter((pokemon) =>
+  const filteredPokemonsByName = pokemons.filter((pokemon: Pokemon) =>
     pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -64,7 +70,7 @@ const PokeDexPage = () => {
       <div className="grid items-start">
         <button
           onClick={openFilterModal}
-          className="filter-button bg-yellow-950 hover:bg-yellow-800 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mb-4 flex items-center justify-evenly"
+          className="filter-button bg-yellow-950 hover-bg-yellow-800 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mb-4 flex items-center justify-evenly"
           style={{ color: "white", border: "none" }}
         >
           Filter
@@ -73,7 +79,7 @@ const PokeDexPage = () => {
         {filteredPokemons && (
           <button
             onClick={clearFilters}
-            className="clear-filter-button bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+            className="clear-filter-button bg-white hover-bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
           >
             Clear Filters
           </button>
@@ -81,10 +87,10 @@ const PokeDexPage = () => {
       </div>
       <div className="flex flex-wrap justify-center	max-w-1300 gap-2.5 pb-10">
         {!filteredPokemons
-          ? filteredPokemonsByName.map((pokemon) => (
+          ? filteredPokemonsByName.map((pokemon: Pokemon) => (
               <PokeDexCard key={pokemon.id} pokemon={pokemon} />
             ))
-          : filteredPokemons.map((pokemon) => (
+          : filteredPokemons.map((pokemon: Pokemon) => (
               <PokeDexCard key={pokemon.id} pokemon={pokemon} />
             ))}
       </div>

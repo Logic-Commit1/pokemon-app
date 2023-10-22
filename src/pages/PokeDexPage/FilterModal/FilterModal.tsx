@@ -1,11 +1,19 @@
-const FilterModal = ({
+interface FilterModalProps {
+  typesList: string[];
+  selectedTypes: string[];
+  setSelectedTypes: (types: string[]) => void;
+  onClose: () => void;
+  onSelectType: (selectedTypes: string[]) => void;
+}
+
+const FilterModal: React.FC<FilterModalProps> = ({
   typesList,
   selectedTypes,
   setSelectedTypes,
   onClose,
   onSelectType,
 }) => {
-  const handleCheckboxChange = (type) => {
+  const handleCheckboxChange = (type: string) => {
     if (selectedTypes.includes(type)) {
       setSelectedTypes(selectedTypes.filter((item) => item !== type));
     } else {
@@ -13,7 +21,7 @@ const FilterModal = ({
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSelectType(selectedTypes);
     onClose();
@@ -22,7 +30,7 @@ const FilterModal = ({
   return (
     <div
       className="fixed bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg"
-      style={{ "box-shadow": "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
+      style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
     >
       <h2 className="ml-8 mt-6 font-semibold lg:ml-11 lg:text-lg lg:font-semibold">
         Types

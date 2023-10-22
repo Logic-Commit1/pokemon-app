@@ -1,4 +1,4 @@
-export const typeColors = {
+export const typeColors: Record<string, string> = {
   fire: "#EE8130",
   water: "#6390F0",
   grass: "#78C850",
@@ -8,7 +8,7 @@ export const typeColors = {
   normal: "#A8A878",
 };
 
-export const cardContentBgColor = {
+export const cardContentBgColor: Record<string, string> = {
   fire: "#ffb47c",
   water: "#afc9ff",
   grass: "#adff84",

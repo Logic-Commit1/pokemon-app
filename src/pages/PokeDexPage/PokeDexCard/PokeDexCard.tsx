@@ -1,6 +1,11 @@
 import { typeColors, cardContentBgColor } from "src/constants";
+import { Pokemon } from "src/queries";
 
-const PokeDexCard = ({ pokemon }) => {
+interface PokeDexCardProps {
+  pokemon: Pokemon;
+}
+
+const PokeDexCard: React.FC<PokeDexCardProps> = ({ pokemon }) => {
   const { name, image, types } = pokemon;
   const responsiveBackgroundColor = cardContentBgColor[types[0].toLowerCase()];
 
