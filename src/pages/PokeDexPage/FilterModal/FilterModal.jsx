@@ -20,7 +20,10 @@ const FilterModal = ({
   };
 
   return (
-    <div className="shadow-2xl fixed bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    <div
+      className="fixed bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg"
+      style={{ "box-shadow": "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
+    >
       <h2 className="ml-8 mt-6 font-semibold lg:ml-11 lg:text-lg lg:font-semibold">
         Types
       </h2>
@@ -30,7 +33,7 @@ const FilterModal = ({
             <li key={index} className="mb-4">
               <label className="flex items-center">
                 <input
-                  className="w-4 mr-1 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  className="w-4 mr-1 h-4 text-yellow-950 bg-gray-100 border-gray-300 rounded focus:ring-yellow-950 dark:focus:ring-yellow-950 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                   type="checkbox"
                   value={type}
                   checked={selectedTypes.includes(type)}

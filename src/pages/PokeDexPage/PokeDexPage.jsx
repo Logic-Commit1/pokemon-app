@@ -1,21 +1,24 @@
 import { useState } from "react";
-import { useQuery } from "@apollo/client";
-import { GET_POKEMONS } from "src/queries";
 import PokeDexCard from "./PokeDexCard/PokeDexCard";
 import FilterModal from "./FilterModal/FilterModal";
 import { FiFilter } from "react-icons/fi";
-
+import { usePokemon } from "src/contexts/PokemonContext";
 import pokedex from "src/assets/pokedex.png";
 
-const PokeDex = () => {
-  const { loading, error, data } = useQuery(GET_POKEMONS);
+const PokeDexPage = () => {
+  const { loading, error, data } = usePokemon();
+
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [filteredPokemons, setFilteredPokemons] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Checks if the query is still loading
-  if (loading) return <center className="mt-10 text-xl">Loading...</center>;
+  if (loading)
+    return (
+      <center className="mt-10 text-xl px-36 py-28 font-extrabold text-yellow-950">
+        Loading Pokemons...
+      </center>
+    );
   // Checks if an error occurred
   if (error) return <p>Error: {error.message}</p>;
   // Destructure the 'pokemons' data from the GraphQL query
@@ -99,4 +102,4 @@ const PokeDex = () => {
   );
 };
 
-export default PokeDex;
+export default PokeDexPage;

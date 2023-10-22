@@ -1,2 +1,2 @@
-export { default as Home } from "./Home/Home";
-export { default as PokeDex } from "./PokeDex/PokeDex";
+export { default as HomePage } from "./HomePage/HomePage";
+export { default as PokeDexPage } from "./PokeDexPage/PokeDexPage";
